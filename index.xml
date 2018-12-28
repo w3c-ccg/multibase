@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN" "http://xml.resource.org/authoring/rfc2629.dtd" [
+  <!ENTITY rfc2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+  <!ENTITY rfc4648 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648xml">
+  <!ENTITY rfc6234 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6234.xml">
+  <!ENTITY rfc6150 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6150.xml">
+  <!ENTITY rfc6151 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6151.xml">
+  <!ENTITY rfc7693 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7693.xml">
+]>
+<?xml-stylesheet type="text/xsl" href="rfc2629.xsl" ?>
+<?rfc compact="yes" ?>
+<?rfc subcompact="no" ?>
+<?rfc toc="yes" ?>
+<?rfc sortrefs="yes" ?>
+<?rfc symrefs="yes" ?>
+<rfc category="std" ipr="trust200902" submissionType="independent"
+  docName="draft-multiformats-multibase-00">
+<front>
+
+  <title>The Multibase Data Format</title>
+
+  <author initials="J.B." surname="Benet" fullname="Juan Benet">
+    <organization>Protocol Labs</organization>
+    <address>
+      <postal>
+        <street>548 Market Street, #51207</street>
+        <city>San Francisco</city>
+        <region>CA</region>
+        <code>94104</code>
+        <country>US</country>
+      </postal>
+      <phone>+1 619 957 7606</phone>
+      <email>juan@protocol.ai</email>
+      <uri>http://juan.benet.ai/</uri>
+    </address>
+  </author>
+
+  <author initials="M.S." surname="Sporny" fullname="Manu Sporny">
+    <organization>Digital Bazaar</organization>
+    <address>
+      <postal>
+        <street>203 Roanoke Street W.</street>
+        <city>Blacksburg</city>
+        <region>VA</region>
+        <code>24060</code>
+        <country>US</country>
+      </postal>
+      <phone>+1 540 961 4469</phone>
+      <email>msporny@digitalbazaar.com</email>
+      <uri>http://manu.sporny.org/</uri>
+    </address>
+  </author>
+
+  <date month="December" year="2018" />
+  <area>Security</area>
+  <workgroup />
+  <keyword>base-encoding</keyword>
+  <keyword>base64</keyword>
+  <keyword>base58</keyword>
+
+  <abstract>
+    <t>
+Raw binary data is often encoded using a mechanism that enables the data
+to be included in human-readable text-based formats. This mechanism is often
+referred to as "base-encoding the data". Base-encoding is often used when
+expressing binary data in hyperlinks, cryptographic keys in web pages, or
+security tokens in application software. There are a variety of base-encodings,
+such as base32, base58, and base64. It is not always possible to differentiate
+one base-encoding from another. The purpose of this specification is to provide
+a mechanism to be able to deterministically identify the base-encoding for a
+particular string of data.
+</t>
+  </abstract>
+
+  <note title="Feedback">
+    <t>
+
+This specification is a joint work product of
+<eref target="https://protocol.ai/">Protocol Labs</eref>, the
+<eref target="https://w3c-dvcg.github.io/">W3C Digital Verification Community Group</eref>,
+and the
+<eref target="https://w3c-ccg.github.io/">W3C Credentials Community Group</eref>.
+Feedback related to this specification should logged in the
+<eref target="https://github.com/w3c-dvcg/multibase/issues">issue tracker</eref>
+or be sent to
+<eref target="mailto:public-credentials@w3.org">public-credentials@w3.org</eref>.
+   .
+</t>
+  </note>
+</front>
+<middle>
+  <section anchor="intro" title="Introduction">
+    <t>
+This specification describes a forward-compatible data model for expressing
+raw binary data in a variety of base-encoding formats such as base32,
+base58. and base64.
+    </t>
+    <t>
+When text is encoded as bytes, we can usually use a one-size-fits-all
+encoding (UTF-8) because we're always encoding to the same set of 256 bytes.
+When that doesn't work, usually for historical or performance reasons, we
+can usually infer the encoding from the context.
+    </t>
+    <t>
+However, when bytes are encoded as text (using a base encoding), the
+choice of base encoding is often restricted by the context. Worse, these
+restrictions can change based on where the data appears in the text. In
+some cases, we can only use [a-z0-9]. In others, we can use a larger set
+of characters but need a compact encoding. This has lead to a large set
+of "base encodings", one for every use-case. Unlike when encoding text to
+bytes, we can't just standardize around a single base encoding because
+there is no optimal encoding for all cases.
+    </t>
+    <t>
+Unfortunately, it's not always clear what base encoding is used; that's
+where this specification comes in. It answers the question:
+    </t>
+    <t>
+Given data 'd' encoded into text 's', what base is it encoded with?
+    </t>
+  </section>
+  <section anchor="components" title="The Multibase Format">
+    <t>
+A multibase-encoded value follows a simple format:
+      <figure>
+        <artwork>base-encoding-character base-encoded-data</artwork>
+      </figure>
+    </t>
+    <t>
+The encoding algorithm is a single character value that is always the first byte
+of the data. The possible values for this field are provided in
+<eref target="#mb-registry">The Multibase Algorithm Registry</eref>.
+    </t>
+    <section anchor="fields" title="A Multibase Example">
+      <t>
+The following is an encoding of "Hello World!" using the version of base-58
+that utilizes the Bitcoin encoding character set:
+        <figure>
+          <artwork>z2NEpo7TZRRrLZSi2U</artwork>
+        </figure>
+The first byte (z) specifies the multibase encoding algorithm. The rest of the
+data specifies the value of the output of the multibase encoding algorithm.
+      </t>
+    </section>
+  </section>
+</middle>
+
+<back>
+  <references title="Normative References">
+&rfc2119;
+&rfc6234;
+&rfc7693;
+  </references>
+
+  <references title="Informative References">
+&rfc6150;
+&rfc6151;
+  </references>
+
+  <section anchor="appendix-a" title="Security Considerations">
+    <t>
+There are a number of security considerations to take into account when
+implementing or utilizing this specification.
+
+TBD
+    </t>
+  </section>
+  <section anchor="appendix-c" title="Test Values">
+
+    <t>
+The multibase examples are chosen to show different encoding algorithms and
+different output lengths at play. The input test data for all of the
+examples in this section is: <artwork>Multibase is awesome! \o/</artwork>
+    </t>
+
+    <section anchor="tv-base16upper" title="Hexadecimal upper-case encoding">
+      <t>
+        <artwork>
+F4D756C74696261736520697320617765736F6D6521205C6F2F
+        </artwork>
+      </t>
+    </section>
+
+    <section anchor="tv-base32upper" title="Base-32 upper-case encoding, no padding">
+      <t>
+        <artwork>
+BJV2WY5DJMJQXGZJANFZSAYLXMVZW63LFEEQFY3ZP
+        </artwork>
+      </t>
+    </section>
+
+    <section anchor="tv-base58btc" title="Base-58 Bitcoin encoding">
+      <t>
+        <artwork>
+zYAjKoNbau5KiqmHPmSxYCvn66dA1vLmwbt
+        </artwork>
+      </t>
+    </section>
+
+    <section anchor="tv-base64pad" title="Base-64 with padding and MIME-encoding">
+      <t>
+        <artwork>
+MTXVsdGliYXNlIGlzIGF3ZXNvbWUhIFxvLw==
+        </artwork>
+      </t>
+    </section>
+
+  </section>
+  <section anchor="acknowledgements" title="Acknowledgements">
+    <t>
+The editors would like to thank the following individuals for feedback on and
+implementations of the specification (in alphabetical order):
+    </t>
+  </section>
+  <section anchor="appendix-d" title="IANA Considerations">
+    <section anchor="mh-registry" title="The Multibase Algorithms Registry">
+      <t>
+
+The following initial entries should be added to the Multibase Algorithms
+Registry to be created and maintained at (the suggested URI)
+        <eref target="http://www.iana.org/assignments/multibase-algorithms">http://www.iana.org/assignments/multibase-algorithms</eref>:
+      </t>
+
+      <texttable anchor="mh-registry-table" title="Multihash Algorithms Registry">
+        <ttcol align="center">Algorithm</ttcol>
+        <ttcol align="center">Identifier (character)</ttcol>
+        <ttcol align="center">Status</ttcol>
+        <ttcol align="center">Specification</ttcol>
+
+        <c>identity</c><c>0x00</c><c>active</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
+        <c>base1</c><c>1</c><c>active</c><c>unary (11111)</c>
+        <c>base2</c><c>0</c><c>active</c><c>binary (01010101)</c>
+        <c>base8</c><c>7</c><c>active</c><c>octal</c>
+        <c>base10</c><c>9</c><c>active</c><c>decimal</c>
+        <c>base16</c><c>f</c><c>active</c><c>hexadecimal</c>
+        <c>base16upper</c><c>F</c><c>active</c><c>hexadecimal</c>
+        <c>base32hex</c><c>v</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding - highest char</c>
+        <c>base32hexupper</c><c>V</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding - highest char</c>
+        <c>base32hexpad</c><c>t</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
+        <c>base32hexpadupper</c><c>T</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
+        <c>base32</c><c>b</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
+        <c>base32upper</c><c>B</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
+        <c>base32pad</c><c>c</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
+        <c>base32padupper</c><c>C</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
+        <c>base32z</c><c>h</c><c>active</c><c>z-base-32 (used by Tahoe-LAFS)</c>
+        <c>base58flickr</c><c>Z</c><c>active</c><c>base58 flicker</c>
+        <c>base58btc</c><c>z</c><c>active</c><c>base58 bitcoin</c>
+        <c>base64</c><c>m</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
+        <c>base64pad</c><c>M</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding - MIME encoding</c>
+        <c>base64url</c><c>u</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
+        <c>base64urlpad</c><c>U</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
+      </texttable>
+
+      <t>
+NOTE: The most up to date place for developers to find the table above is
+<eref target="https://github.com/multiformats/multibase/blob/master/multibase.csv">https://github.com/multiformats/multibase/blob/master/multibase.csv</eref>.
+      </t>
+    </section>
+  </section>
+</back>
+</rfc>
