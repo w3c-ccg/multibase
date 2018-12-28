@@ -1,6 +1,6 @@
 ## The Multibase Data Format
 
-This specification describes forward-compatible data model for expressing
+This specification describes a forward-compatible data model for expressing
 raw binary data in a variety of base-encoding formats such as base32,
 base58. and base64.
 
