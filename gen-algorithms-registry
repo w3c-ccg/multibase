@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+#
+# Script to generate the multihash algorithms registry from the CSV file
+import codecs
+import csv
+import urllib.request
+
+url = 'https://raw.githubusercontent.com/multiformats/multibase/master/multibase.csv'
+stream = urllib.request.urlopen(url)
+csvdata = csv.reader(codecs.iterdecode(stream, 'utf-8'))
+
+print("""
+      <texttable anchor="mh-registry-table" title="Multihash Algorithms Registry">
+        <ttcol align="center">Algorithm</ttcol>
+        <ttcol align="center">Identifier (character)</ttcol>
+        <ttcol align="center">Status</ttcol>
+        <ttcol align="center">Specification</ttcol>
+""")
+
+for line in csvdata:
+    codec = line[0].strip()
+    identifier = line[1].strip()
+    status = 'active'
+    spec = line[2].strip().replace(
+        'rfc4648', '<xref target="RFC4648">RFC 4648</xref>')
+
+    if(identifier == 'code'):
+        continue
+
+    print(f'        <c>{codec}</c><c>{identifier}</c><c>{status}</c><c>{spec}</c>')
+
+print('      </texttable>')
