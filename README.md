@@ -1,14 +1,15 @@
 ## The Multibase Data Format
 
-This specification describes a data model for expressing raw binary data in a
-variety of encoding formats.
+This specification describes forward-compatible data model for expressing
+raw binary data in a variety of base-encoding formats such as base32,
+base58. and base64.
 
 When text is encoded as bytes, we can usually use a one-size-fits-all
-encoding (UTF-8) because we're always encoding to the same set of 256 bytes
-(+/- the NUL byte). When that doesn't work, usually for historical or
-performance reasons, we can usually infer the encoding from the context.
+encoding (UTF-8) because we're always encoding to the same set of 256 bytes.
+When that doesn't work, usually for historical or performance reasons, we
+can usually infer the encoding from the context.
 
-However, when bytes are encoded as text (using a base encoding), the base
+However, when bytes are encoded as text (using a base encoding), the
 choice of base encoding is often restricted by the context. Worse, these
 restrictions can change based on where the data appears in the text. In
 some cases, we can only use [a-z0-9]. In others, we can use a larger set
@@ -20,7 +21,7 @@ there is no optimal encoding for all cases.
 Unfortunately, it's not always clear what base encoding is used; that's
 where multibase comes in. It answers the question:
 
-  Given data d encoded into text s, what base is it encoded with?
+Given data d encoded into text s, what base is it encoded with?
 
 You can view an HTML version of the specification here:
 
