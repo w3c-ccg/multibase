@@ -10,7 +10,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc symrefs="yes" ?>
 <rfc category="std" ipr="trust200902" submissionType="independent"
-  docName="draft-multiformats-multibase-00">
+  docName="draft-multiformats-multibase-01">
 <front>
 
   <title>The Multibase Data Format</title>
