@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN" "http://xml.resource.org/authoring/rfc2629.dtd" [
   <!ENTITY rfc2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
-  <!ENTITY rfc4648 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648xml">
-  <!ENTITY rfc6234 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6234.xml">
-  <!ENTITY rfc6150 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6150.xml">
-  <!ENTITY rfc6151 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6151.xml">
-  <!ENTITY rfc7693 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7693.xml">
+  <!ENTITY rfc4648 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648.xml">
 ]>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xsl" ?>
 <?rfc compact="yes" ?>
@@ -148,13 +144,7 @@ data specifies the value of the output of the multibase encoding algorithm.
 <back>
   <references title="Normative References">
 &rfc2119;
-&rfc6234;
-&rfc7693;
-  </references>
-
-  <references title="Informative References">
-&rfc6150;
-&rfc6151;
+&rfc4648;
   </references>
 
   <section anchor="appendix-a" title="Security Considerations">
@@ -170,38 +160,50 @@ TBD
     <t>
 The multibase examples are chosen to show different encoding algorithms and
 different output lengths at play. The input test data for all of the
-examples in this section is: <artwork>Multibase is awesome! \o/</artwork>
+examples in this section is:
     </t>
+
+    <figure>
+      <artwork>Multibase is awesome! \o/</artwork>
+    </figure>
 
     <section anchor="tv-base16upper" title="Hexadecimal upper-case encoding">
       <t>
-        <artwork>
+        <figure>
+          <artwork>
 F4D756C74696261736520697320617765736F6D6521205C6F2F
-        </artwork>
+          </artwork>
+        </figure>
       </t>
     </section>
 
     <section anchor="tv-base32upper" title="Base-32 upper-case encoding, no padding">
       <t>
-        <artwork>
+        <figure>
+          <artwork>
 BJV2WY5DJMJQXGZJANFZSAYLXMVZW63LFEEQFY3ZP
-        </artwork>
+          </artwork>
+        </figure>
       </t>
     </section>
 
     <section anchor="tv-base58btc" title="Base-58 Bitcoin encoding">
       <t>
-        <artwork>
+        <figure>
+          <artwork>
 zYAjKoNbau5KiqmHPmSxYCvn66dA1vLmwbt
-        </artwork>
+          </artwork>
+        </figure>
       </t>
     </section>
 
     <section anchor="tv-base64pad" title="Base-64 with padding and MIME-encoding">
       <t>
-        <artwork>
+        <figure>
+          <artwork>
 MTXVsdGliYXNlIGlzIGF3ZXNvbWUhIFxvLw==
-        </artwork>
+          </artwork>
+        </figure>
       </t>
     </section>
 
