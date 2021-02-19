@@ -10,7 +10,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc symrefs="yes" ?>
 <rfc category="std" ipr="trust200902" submissionType="independent"
-  docName="draft-multiformats-multibase-02">
+  docName="draft-multiformats-multibase-03">
 <front>
 
   <title>The Multibase Data Format</title>
@@ -47,7 +47,7 @@
     </address>
   </author>
 
-  <date month="August" year="2020" />
+  <date month="February" year="2021" />
   <area>Security</area>
   <workgroup />
   <keyword>base-encoding</keyword>
