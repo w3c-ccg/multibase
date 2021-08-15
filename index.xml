@@ -9,7 +9,7 @@
 <?rfc toc="yes" ?>
 <?rfc sortrefs="yes" ?>
 <?rfc symrefs="yes" ?>
-<rfc category="std" ipr="trust200902" submissionType="independent"
+<rfc category="info" ipr="trust200902" submissionType="independent"
   docName="draft-multiformats-multibase-04">
 <front>
 

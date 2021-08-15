@@ -16,7 +16,7 @@ particular string of data.
 
 You can view an HTML version of the specification here:
 
-[https://w3c-ccg.github.io/multibase/](https://w3c-ccg.github.io/multibase/)
+[https://datatracker.ietf.org/doc/html/draft-multiformats-multibase](https://datatracker.ietf.org/doc/html/draft-multiformats-multibase)
 
 We encourage contributions meeting the [Contribution
 Guidelines](CONTRIBUTING.md).  While we prefer the creation of issues
