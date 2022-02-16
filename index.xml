@@ -10,12 +10,12 @@
 <?rfc sortrefs="yes" ?>
 <?rfc symrefs="yes" ?>
 <rfc category="info" ipr="trust200902" submissionType="independent"
-  docName="draft-multiformats-multibase-04">
+  docName="draft-multiformats-multibase-05">
 <front>
 
   <title>The Multibase Data Format</title>
 
-  <author initials="J.B." surname="Benet" fullname="Juan Benet">
+  <author initials="J." surname="Benet" fullname="Juan Benet">
     <organization>Protocol Labs</organization>
     <address>
       <postal>
@@ -31,7 +31,7 @@
     </address>
   </author>
 
-  <author initials="M.S." surname="Sporny" fullname="Manu Sporny">
+  <author initials="M." surname="Sporny" fullname="Manu Sporny">
     <organization>Digital Bazaar</organization>
     <address>
       <postal>
@@ -47,7 +47,7 @@
     </address>
   </author>
 
-  <date month="August" year="2021" />
+  <date month="February" year="2022" />
   <area>Security</area>
   <workgroup />
   <keyword>base-encoding</keyword>
