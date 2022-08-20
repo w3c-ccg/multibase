@@ -10,7 +10,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc symrefs="yes" ?>
 <rfc category="info" ipr="trust200902" submissionType="independent"
-  docName="draft-multiformats-multibase-05">
+  docName="draft-multiformats-multibase-06">
 <front>
 
   <title>The Multibase Data Format</title>
@@ -47,7 +47,6 @@
     </address>
   </author>
 
-  <date month="February" year="2022" />
   <area>Security</area>
   <workgroup />
   <keyword>base-encoding</keyword>
@@ -253,6 +252,7 @@ Registry to be created and maintained at (the suggested URI)
         <c>base64url</c><c>u</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
         <c>base64urlpad</c><c>U</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
         <c>proquint</c><c>p</c><c>active</c><c>PRO-QUINT https://arxiv.org/html/0901.4016</c>
+        <c>base256emoji</c><c>🚀</c><c>active</c><c>base256 with custom alphabet using variable-sized-codepoints</c>
       </texttable>
 
       <t>
