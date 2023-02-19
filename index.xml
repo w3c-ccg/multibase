@@ -1,20 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN" "http://xml.resource.org/authoring/rfc2629.dtd" [
-  <!ENTITY rfc2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
-  <!ENTITY rfc4648 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648.xml">
-]>
+<?xml version='1.0' encoding='utf-8'?>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xsl" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 <?rfc toc="yes" ?>
 <?rfc sortrefs="yes" ?>
 <?rfc symrefs="yes" ?>
-<rfc category="info" ipr="trust200902" submissionType="independent"
-  docName="draft-multiformats-multibase-07">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="info"
+  ipr="trust200902" submissionType="IETF"
+  docName="draft-multiformats-multibase-07"
+  tocInclude="true" sortRefs="true" symRefs="true" version="2">
+
 <front>
-
   <title>The Multibase Data Format</title>
-
+  <seriesInfo name="Internet-Draft" value="draft-multiformats-multibase-07"/>
   <author initials="J." surname="Benet" fullname="Juan Benet">
     <organization>Protocol Labs</organization>
     <address>
@@ -47,11 +45,15 @@
     </address>
   </author>
 
+  <date month="February" day="19" year="2023" />
   <area>Security</area>
   <workgroup />
   <keyword>base-encoding</keyword>
   <keyword>base64</keyword>
   <keyword>base58</keyword>
+  <keyword>base32</keyword>
+  <keyword>base16</keyword>
+  <keyword>base2</keyword>
 
   <abstract>
     <t>
@@ -64,12 +66,11 @@ such as base32, base58, and base64. It is not always possible to differentiate
 one base-encoding from another. The purpose of this specification is to provide
 a mechanism to be able to deterministically identify the base-encoding for a
 particular string of data.
-</t>
+    </t>
   </abstract>
 
   <note title="Feedback">
     <t>
-
 This specification is a joint work product of
 <eref target="https://protocol.ai/">Protocol Labs</eref>,
 and the
@@ -139,9 +140,18 @@ data specifies the value of the output of the multibase encoding algorithm.
 </middle>
 
 <back>
-  <references title="Normative References">
-&rfc2119;
-&rfc4648;
+  <references>
+    <name>Normative References</name>
+    <reference anchor="RFC4648" target="https://www.rfc-editor.org/info/rfc4648">
+      <front>
+        <title>The Base16, Base32, and Base64 Data Encodings</title>
+        <author fullname="S. Josefsson" initials="S." surname="Josefsson"/>
+        <date month="October" year="2006"/>
+      </front>
+      <seriesInfo name="RFC" value="4648"/>
+      <seriesInfo name="DOI" value="10.17487/RFC4648"/>
+    </reference>
+
   </references>
 
   <section anchor="appendix-a" title="Security Considerations">
@@ -241,8 +251,8 @@ Registry to be created and maintained at (the suggested URI)
         <c>base32pad</c><c>c</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
         <c>base32padupper</c><c>C</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
         <c>base32z</c><c>h</c><c>active</c><c>z-base-32 (used by Tahoe-LAFS)</c>
-        <c>base36</c><c>k</c><c>active</c><c>base36 [0-9a-z] case-insensitive - no padding</c>
-        <c>base36upper</c><c>K</c><c>active</c><c>base36 [0-9a-z] case-insensitive - no padding</c>
+        <c>base36</c><c>k</c><c>active</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
+        <c>base36upper</c><c>K</c><c>active</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
         <c>base58btc</c><c>z</c><c>active</c><c>base58 bitcoin</c>
         <c>base58flickr</c><c>Z</c><c>active</c><c>base58 flicker</c>
         <c>base64</c><c>m</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
