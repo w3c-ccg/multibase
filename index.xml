@@ -10,7 +10,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc symrefs="yes" ?>
 <rfc category="info" ipr="trust200902" submissionType="independent"
-  docName="draft-multiformats-multibase-06">
+  docName="draft-multiformats-multibase-07">
 <front>
 
   <title>The Multibase Data Format</title>
@@ -71,15 +71,13 @@ particular string of data.
     <t>
 
 This specification is a joint work product of
-<eref target="https://protocol.ai/">Protocol Labs</eref>, the
-<eref target="https://w3c-dvcg.github.io/">W3C Digital Verification Community Group</eref>,
+<eref target="https://protocol.ai/">Protocol Labs</eref>,
 and the
 <eref target="https://w3c-ccg.github.io/">W3C Credentials Community Group</eref>.
 Feedback related to this specification should logged in the
-<eref target="https://github.com/w3c-dvcg/multibase/issues">issue tracker</eref>
+<eref target="https://github.com/w3c-ccg/multibase/issues">issue tracker</eref>
 or be sent to
 <eref target="mailto:public-credentials@w3.org">public-credentials@w3.org</eref>.
-   .
 </t>
   </note>
 </front>
