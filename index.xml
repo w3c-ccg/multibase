@@ -222,7 +222,7 @@ implementations of the specification (in alphabetical order):
     </t>
   </section>
   <section anchor="appendix-d" title="IANA Considerations">
-    <section anchor="mh-registry" title="The Multibase Algorithms Registry">
+    <section anchor="mb-registry" title="The Multibase Algorithms Registry">
       <t>
 
 The following initial entries should be added to the Multibase Algorithms
@@ -230,7 +230,7 @@ Registry to be created and maintained at (the suggested URI)
         <eref target="http://www.iana.org/assignments/multibase-algorithms">http://www.iana.org/assignments/multibase-algorithms</eref>:
       </t>
 
-      <texttable anchor="mh-registry-table" title="Multihash Algorithms Registry">
+      <texttable anchor="mb-registry-table" title="Multibase Algorithms Registry">
         <ttcol align="center">Algorithm</ttcol>
         <ttcol align="center">Identifier (character)</ttcol>
         <ttcol align="center">Status</ttcol>
