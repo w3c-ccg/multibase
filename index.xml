@@ -150,9 +150,9 @@ base-encodings are used but only encoded from UTF-8, cannot collide with other
 entries in the registry group (multiformats) of which multibase is only one
 registry. Note that all registries in the registry group are organized around a
 unique entry of UTF-8 bytes.  See also <eref target="#mb-registry">The Multibase
-Algorithm Registry</eref> for more context, and also the <a
-href="https://github.com/multiformats/unsigned-varint">unsigned varint
-specification</a> for an explanation of how these UTF-8 bytes are generally
+Algorithm Registry</eref> for more context, and also the <eref
+target="https://github.com/multiformats/unsigned-varint">unsigned varint
+specification</eref> for an explanation of how these UTF-8 bytes are generally
 expressed and handled by current implementations.
     </t>
     <t>
@@ -259,7 +259,7 @@ implementations of the specification (in alphabetical order):
     </t>
   </section>
   <section anchor="appendix-d" title="IANA Considerations">
-    <section anchor="mh-registry" title="The Multibase Algorithms Registry">
+    <section anchor="mb-registry" title="The Multibase Algorithms Registry">
       <t>
 
 The following initial entries should be added to the Multibase Algorithms
@@ -267,13 +267,13 @@ Registry to be created and maintained at (the suggested URI)
         <eref target="http://www.iana.org/assignments/multibase-algorithms">http://www.iana.org/assignments/multibase-algorithms</eref>:
       </t>
 
-      <texttable anchor="mh-registry-table" title="Multihash Algorithms Registry">
+      <texttable anchor="mb-registry-table" title="Multibase Algorithms Registry">
         <ttcol align="center">Algorithm</ttcol>
-        <ttcol align="center">Identifier (character)</ttcol>
+        <ttcol align="center">Identifier (codepoint)</ttcol>
         <ttcol align="center">Status</ttcol>
         <ttcol align="center">Specification</ttcol>
 
-        <c>identity</c><c>0x00</c><c>reserved</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
+        <c>identity</c><c>NULL (0x00 in UTF-8)</c><c>reserved</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
         <c>base2</c><c>0</c><c>final</c><c>binary (01010101)</c>
         <c>base8</c><c>7</c><c>final</c><c>octal</c>
         <c>base10</c><c>9</c><c>final</c><c>decimal</c>
