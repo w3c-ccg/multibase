@@ -45,6 +45,22 @@
     </address>
   </author>
 
+  <author initials="J." surname="Caballero" fullname="Juan Caballero">
+    <organization>learningProof uG</organization>
+    <address>
+      <postal>
+        <street>Kiefholzstrasse</street>
+        <city>Berlin</city>
+        <region>Berlin</region>
+        <code>12435</code>
+        <country>Germany</country>
+      </postal>
+      <phone>+1 415 555 5555</phone>
+      <email>bumblefudge@learningproof.xyz</email>
+      <uri>http://learningproof.xyz/</uri>
+    </address>
+  </author>
+
   <date month="July" day="21" year="2023" />
   <area>Security</area>
   <workgroup />
@@ -259,9 +275,17 @@ implementations of the specification (in alphabetical order):
     </t>
   </section>
   <section anchor="appendix-d" title="IANA Considerations">
+      <t>
+The registry for this specification would be one of multiple registries in the
+Multiformats registry group; registrations in this table would be keyed to
+entries in the group's table on the UTF-8 column. See the <eref
+target="http://www.caballerojuan.com/ccg-multiformats-spec/#appendix-c">IANA
+Considerations</eref> section  of the 
+<eref target="http://www.caballerojuan.com/ccg-multiformats-spec/">Multiformats
+specification INFORMAL DRAFT</eref> for details on the governance thereof.
+      </t>
     <section anchor="mb-registry" title="The Multibase Algorithms Registry">
       <t>
-
 The following initial entries should be added to the Multibase Algorithms
 Registry to be created and maintained at (the suggested URI)
         <eref target="http://www.iana.org/assignments/multibase-algorithms">http://www.iana.org/assignments/multibase-algorithms</eref>:
