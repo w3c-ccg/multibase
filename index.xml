@@ -45,7 +45,7 @@
     </address>
   </author>
 
-  <date month="February" day="19" year="2023" />
+  <date month="July" day="21" year="2023" />
   <area>Security</area>
   <workgroup />
   <keyword>base-encoding</keyword>
@@ -57,15 +57,16 @@
 
   <abstract>
     <t>
-Raw binary data is often encoded using a mechanism that enables the data
-to be included in human-readable text-based formats. This mechanism is often
-referred to as "base-encoding the data". Base-encoding is often used when
-expressing binary data in hyperlinks, cryptographic keys in web pages, or
-security tokens in application software. There are a variety of base-encodings,
-such as base32, base58, and base64. It is not always possible to differentiate
-one base-encoding from another. The purpose of this specification is to provide
-a mechanism to be able to deterministically identify the base-encoding for a
-particular string of data.
+Raw binary data is often encoded using a mechanism that enables the data to be
+included in human-readable text-based formats. This mechanism is often referred
+to as "base-encoding the data". Base-encoding is often used when expressing
+binary data in hyperlinks, cryptographic keys in web pages, or security tokens
+in application software. There are a variety of base-encodings, such as base32,
+base58, and base64. It is not always possible to differentiate one base-encoding
+from another without knowing the context in which it was encoded. The purpose of
+this specification is to provide a mechanism to be able to deterministically
+identify the base-encoding for a particular string of encoded data from its
+encoded form.
     </t>
   </abstract>
 
@@ -106,34 +107,71 @@ bytes, we can't just standardize around a single base encoding because
 there is no optimal encoding for all cases.
     </t>
     <t>
-Unfortunately, it's not always clear what base encoding is used; that's
-where this specification comes in. It answers the question:
+Unfortunately, it's not always clear what base encoding was used, and the
+encoded form can often be severed from its encoding context; that's where this
+specification comes in. It answers the question:
     </t>
     <t>
-Given data 'd' encoded into text 's', what base is it encoded with?
+Given binary data d encoded into text s, what base b was used to encode it?
+    </t>
+    <t>
+To answer this question, a single code point is prepended to s at time of
+encoding, which signals in that new context which b can be used to reconstruct
+d.    
     </t>
   </section>
   <section anchor="components" title="The Multibase Format">
     <t>
 A multibase-encoded value follows a simple format:
       <figure>
-        <artwork>base-encoding-character base-encoded-data</artwork>
+        <artwork>base-encoding-codepoint base-encoded-data</artwork>
       </figure>
     </t>
     <t>
-The encoding algorithm is a single character value that is always the first byte
-of the data. The possible values for this field are provided in
-<eref target="#mb-registry">The Multibase Algorithm Registry</eref>.
+Each unique encoding algorithm is thus represented unambiguously by a single
+codepoint that is always the first codepoint in the target encoding. In
+ASCII/lower-base encodings, this usually corresponds to the "first byte" in the
+binary data, since these encodings are entirely in the single-byte range; in
+use-cases where UTF-8 can be assumed for all input data, the encoding can thus
+be detected on the binary side from the first byte for these encodings, rather
+than on the encoded string. To date, all entries have followed the convention of
+using the highest codepoint in the encoding alphabet as their prefix, but this
+is not a requirement of future entries.
+    </t>
+    <t>
+Although the "prefix codepoint" is the determinant value here, the range of all
+possible multibase entries is narrower than all possible codepoints for two
+reasons. Firstly, there are reserved entries required for the functioning of the
+system; for example, the identity/null codepoint, which is a pseudo-entry
+necessary for the functioning of the system (signalling an entry in a dataset
+that cannot be multibased and must be treated otherwise). Secondly, the UTF-8
+form of each codepoint, which can be used in contexts where multiple
+base-encodings are used but only encoded from UTF-8, cannot collide with other
+entries in the registry group (multiformats) of which multibase is only one
+registry. Note that all registries in the registry group are organized around a
+unique entry of UTF-8 bytes.  See also <eref target="#mb-registry">The Multibase
+Algorithm Registry</eref> for more context, and also the <a
+href="https://github.com/multiformats/unsigned-varint">unsigned varint
+specification</a> for an explanation of how these UTF-8 bytes are generally
+expressed and handled by current implementations.
+    </t>
+    <t>
+To date, only ASCII codepoints have reached "final" status and been supported by
+current implementations, but higher-base encodings could reach maturity at a
+future time, necessitating a distinction between the ASCII-only implementations
+and extended-range implementations. Note that two such extended-range
+implementations are currently in the registry, proquint and base256emoji.
     </t>
     <section anchor="fields" title="A Multibase Example">
       <t>
 The following is an encoding of "Hello World!" using the version of base-58
-that utilizes the Bitcoin encoding character set:
+that utilizes the Bitcoin "alphabet", i.e. encoding character set:
         <figure>
           <artwork>z2NEpo7TZRRrLZSi2U</artwork>
         </figure>
-The first byte (z) specifies the multibase encoding algorithm. The rest of the
-data specifies the value of the output of the multibase encoding algorithm.
+The first character (z) specifies the multibase encoding algorithm (entry
+`base58btc` in the table below). The rest of the data specifies the value of the
+output of the multibase encoding algorithm.
       </t>
     </section>
   </section>
@@ -151,7 +189,6 @@ data specifies the value of the output of the multibase encoding algorithm.
       <seriesInfo name="RFC" value="4648"/>
       <seriesInfo name="DOI" value="10.17487/RFC4648"/>
     </reference>
-
   </references>
 
   <section anchor="appendix-a" title="Security Considerations">
@@ -236,36 +273,39 @@ Registry to be created and maintained at (the suggested URI)
         <ttcol align="center">Status</ttcol>
         <ttcol align="center">Specification</ttcol>
 
-        <c>identity</c><c>0x00</c><c>active</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
-        <c>base2</c><c>0</c><c>active</c><c>binary (01010101)</c>
-        <c>base8</c><c>7</c><c>active</c><c>octal</c>
-        <c>base10</c><c>9</c><c>active</c><c>decimal</c>
-        <c>base16</c><c>f</c><c>active</c><c>hexadecimal</c>
-        <c>base16upper</c><c>F</c><c>active</c><c>hexadecimal</c>
-        <c>base32hex</c><c>v</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding - highest char</c>
-        <c>base32hexupper</c><c>V</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding - highest char</c>
-        <c>base32hexpad</c><c>t</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32hexpadupper</c><c>T</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32</c><c>b</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding</c>
-        <c>base32upper</c><c>B</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding</c>
-        <c>base32pad</c><c>c</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32padupper</c><c>C</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32z</c><c>h</c><c>active</c><c>z-base-32 (used by Tahoe-LAFS)</c>
-        <c>base36</c><c>k</c><c>active</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
-        <c>base36upper</c><c>K</c><c>active</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
-        <c>base58btc</c><c>z</c><c>active</c><c>base58 bitcoin</c>
-        <c>base58flickr</c><c>Z</c><c>active</c><c>base58 flicker</c>
-        <c>base64</c><c>m</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
-        <c>base64pad</c><c>M</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding - MIME encoding</c>
-        <c>base64url</c><c>u</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
-        <c>base64urlpad</c><c>U</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
-        <c>proquint</c><c>p</c><c>active</c><c>PRO-QUINT https://arxiv.org/html/0901.4016</c>
-        <c>base256emoji</c><c>🚀</c><c>active</c><c>base256 with custom alphabet using variable-sized-codepoints</c>
+        <c>identity</c><c>0x00</c><c>reserved</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
+        <c>base2</c><c>0</c><c>final</c><c>binary (01010101)</c>
+        <c>base8</c><c>7</c><c>final</c><c>octal</c>
+        <c>base10</c><c>9</c><c>final</c><c>decimal</c>
+        <c>base16</c><c>f</c><c>final</c><c>hexadecimal</c>
+        <c>base16upper</c><c>F</c><c>final</c><c>hexadecimal</c>
+        <c>base32hex</c><c>v</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding - highest char</c>
+        <c>base32hexupper</c><c>V</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding - highest char</c>
+        <c>base32hexpad</c><c>t</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
+        <c>base32hexpadupper</c><c>T</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
+        <c>base32</c><c>b</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding</c>
+        <c>base32upper</c><c>B</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding</c>
+        <c>base32pad</c><c>c</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
+        <c>base32padupper</c><c>C</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
+        <c>base32z</c><c>h</c><c>final</c><c>z-base-32 (used by Tahoe-LAFS)</c>
+        <c>base36</c><c>k</c><c>final</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
+        <c>base36upper</c><c>K</c><c>final</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
+        <c>base58btc</c><c>z</c><c>final</c><c>base58 bitcoin</c>
+        <c>base58flickr</c><c>Z</c><c>final</c><c>base58 flicker</c>
+        <c>base64</c><c>m</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
+        <c>base64pad</c><c>M</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> with padding - MIME encoding</c>
+        <c>base64url</c><c>u</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
+        <c>base64urlpad</c><c>U</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
+        <c>proquint</c><c>p</c><c>experimental</c><c>PRO-QUINT https://arxiv.org/html/0901.4016</c>
+        <c>base256emoji</c><c>🚀</c><c>experimental</c><c>base256 with custom alphabet using variable-sized-codepoints</c>
       </texttable>
 
       <t>
-NOTE: The most up to date place for developers to find the table above is
-<eref target="https://github.com/multiformats/multibase/blob/master/multibase.csv">https://github.com/multiformats/multibase/blob/master/multibase.csv</eref>.
+NOTE: The most up to date place for developers to find the definitive table above is
+<eref
+target="https://github.com/multiformats/multibase/blob/master/multibase.csv">https://github.com/multiformats/multibase/blob/master/multibase.csv</eref>.
+For the purposes of this preview, the proposed update to this table can be found
+here: <eref target="https://github.com/multiformats/multibase/blob/b9ca0426d9d1f8c4b7be6925e5b8be04cabe6ab9/multibase.csv">https://github.com/multiformats/multibase/blob/b9ca0426d9d1f8c4b7be6925e5b8be04cabe6ab9/multibase.csv</eref>.
       </t>
     </section>
   </section>
