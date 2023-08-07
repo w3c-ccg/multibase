@@ -131,9 +131,9 @@ specification comes in. It answers the question:
 Given binary data d encoded into text s, what base b was used to encode it?
     </t>
     <t>
-To answer this question, a single code point is prepended to s at time of
-encoding, which signals in that new context which b can be used to reconstruct
-d.    
+To answer this question, a single code point is prepended to <var>s</var> at time of
+encoding, which signals which <var>b</var> can be used to reconstruct
+<var>d</var> in that new context.
     </t>
   </section>
   <section anchor="components" title="The Multibase Format">
