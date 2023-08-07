@@ -180,7 +180,7 @@ implementations are currently in the registry, proquint and base256emoji.
     </t>
     <section anchor="fields" title="A Multibase Example">
       <t>
-The following is an encoding of "Hello World!" using the version of base-58
+The following is an encoding of "Hello World!" in the version of base-58
 that utilizes the Bitcoin "alphabet", i.e. encoding character set:
         <figure>
           <artwork>z2NEpo7TZRRrLZSi2U</artwork>
