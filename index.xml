@@ -303,21 +303,21 @@ Registry to be created and maintained at (the suggested URI)
         <c>base10</c><c>9</c><c>final</c><c>decimal</c>
         <c>base16</c><c>f</c><c>final</c><c>hexadecimal</c>
         <c>base16upper</c><c>F</c><c>final</c><c>hexadecimal</c>
-        <c>base32hex</c><c>v</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding - highest char</c>
-        <c>base32hexupper</c><c>V</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding - highest char</c>
-        <c>base32hexpad</c><c>t</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32hexpadupper</c><c>T</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32</c><c>b</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding</c>
-        <c>base32upper</c><c>B</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding</c>
-        <c>base32pad</c><c>c</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32padupper</c><c>C</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
+        <c>base32hex</c><c>v</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — no padding — highest char</c>
+        <c>base32hexupper</c><c>V</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — no padding — highest char</c>
+        <c>base32hexpad</c><c>t</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — with padding</c>
+        <c>base32hexpadupper</c><c>T</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — with padding</c>
+        <c>base32</c><c>b</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — no padding</c>
+        <c>base32upper</c><c>B</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — no padding</c>
+        <c>base32pad</c><c>c</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — with padding</c>
+        <c>base32padupper</c><c>C</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — with padding</c>
         <c>base32z</c><c>h</c><c>final</c><c>z-base-32 (used by Tahoe-LAFS)</c>
-        <c>base36</c><c>k</c><c>final</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
-        <c>base36upper</c><c>K</c><c>final</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
+        <c>base36</c><c>k</c><c>final</c><c>base36 \[0-9a-z\] case-insensitive — no padding</c>
+        <c>base36upper</c><c>K</c><c>final</c><c>base36 \[0-9a-z\] case-insensitive — no padding</c>
         <c>base58btc</c><c>z</c><c>final</c><c>base58 bitcoin</c>
         <c>base58flickr</c><c>Z</c><c>final</c><c>base58 flicker</c>
         <c>base64</c><c>m</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
-        <c>base64pad</c><c>M</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> with padding - MIME encoding</c>
+        <c>base64pad</c><c>M</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> with padding — MIME encoding</c>
         <c>base64url</c><c>u</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
         <c>base64urlpad</c><c>U</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
         <c>proquint</c><c>p</c><c>experimental</c><c>PRO-QUINT https://arxiv.org/html/0901.4016</c>
