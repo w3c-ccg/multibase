@@ -328,7 +328,7 @@ Registry to be created and maintained at (the suggested URI)
 NOTE: The most up to date place for developers to find the definitive table above is
 <eref
 target="https://github.com/multiformats/multibase/blob/master/multibase.csv">https://github.com/multiformats/multibase/blob/master/multibase.csv</eref>.
-For the purposes of this preview, the proposed update to this table can be found
+For purposes of this preview, the proposed update to this table can be found
 here: <eref target="https://github.com/multiformats/multibase/blob/b9ca0426d9d1f8c4b7be6925e5b8be04cabe6ab9/multibase.csv">https://github.com/multiformats/multibase/blob/b9ca0426d9d1f8c4b7be6925e5b8be04cabe6ab9/multibase.csv</eref>.
       </t>
     </section>
