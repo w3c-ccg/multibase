@@ -128,7 +128,7 @@ encoded form can often be severed from its encoding context; that's where this
 specification comes in. It answers the question:
     </t>
     <t>
-Given binary data d encoded into text s, what base b was used to encode it?
+Given binary data <var>d</var> encoded into text <var>s</var>, what base <var>b</var> was used to encode it?
     </t>
     <t>
 To answer this question, a single code point is prepended to <var>s</var> at time of
