@@ -5,7 +5,7 @@ import codecs
 import csv
 import urllib.request
 
-url = 'https://github.com/multiformats/multibase/blob/b9ca0426d9d1f8c4b7be6925e5b8be04cabe6ab9/multibase.csv'
+url = 'https://raw.githubusercontent.com/multiformats/multibase/master/multibase.csv'
 stream = urllib.request.urlopen(url)
 csvdata = csv.reader(codecs.iterdecode(stream, 'utf-8'))
 
