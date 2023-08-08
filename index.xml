@@ -80,7 +80,7 @@ binary data in hyperlinks, cryptographic keys in web pages, or security tokens
 in application software. There are a variety of base-encodings, such as base32,
 base58, and base64. It is not always possible to differentiate one base-encoding
 from another without knowing the context in which it was encoded. The purpose of
-this specification is to provide a mechanism to be able to deterministically
+this specification is to provide a mechanism by which to deterministically
 identify the base-encoding for a particular string of encoded data from its
 encoded form.
     </t>
