@@ -300,8 +300,8 @@ encoding is accepted.
     <t>
 2. Additionally, contact information for a change controller (not necessarily
 the same person as above; ideally an organization assuming long-term
-responsibility for at least one implementation using the new base code) in case
-of updates to or disputes around an entry.
+responsibility for at least one implementation using the new base code) who can
+handle updates to or disputes regarding an entry.
     </t>
     <t>
 3. Describe a convincing use case for the deployment of this specific encoding.
@@ -315,18 +315,18 @@ provide evidence that the encoding is supported by at least two production
 implementations.
     </t>
     <t>
-If an encoding seems plausible but does not yet fulfil all requirements, it can
+If an encoding seems plausible but does not yet fulfill all requirements, it can
 be registered with a `draft` status.  In exceptional cases, consensus of the
 Stewards and Experts can excuse one of the above requirements. 
     </t>
     <t>
-Encodings with a `draft` status should be revisited by <eref
+Encodings with a `draft` status should be revisited by the <eref
 target="https://github.com/orgs/ipfs/teams/specs-stewards/members">Specs
-Stewards</eref> regularly. If after some reasonable amount of time (enough to
-make progress, but ideally no more than a year) a `draft` encoding has not
+Stewards</eref> regularly. If, after some reasonable amount of time (enough to
+make progress, but ideally no more than a year), a `draft` encoding has not
 resolved issues with its registration, it will become `deprecated`. After an
-encoding is `deprecated` for some time at the discretion of the Stewards and
-Experts, decided to be sufficient for its use to be reasonably considered
+encoding is `deprecated` for some time, at the discretion of the Stewards and
+Experts decided to be sufficient for its use to be reasonably considered
 eliminated or historical, its code becomes available for reuse (but remains
 listed under new entries as `deprecated`). 
     </t>
