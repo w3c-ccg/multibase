@@ -334,6 +334,7 @@ listed under new entries as `deprecated`).
 Accepted encodings that meet all of the requirements above (confirmed by the
 Experts) will be granted a status of `permanent` within a reasonable amount of
 time by the Stewards.
+    </section>
     <section anchor="mb-registry" title="The Multibase Algorithms Registry">
       <t>
 The following initial entries should be added to the Multibase Algorithms
