@@ -289,8 +289,8 @@ Required</eref> basis.
     <t>
 To ensure that our registries are as extensible as they need to be but
 do not suffer from over-use, we have a set of criteria which are used to ensure
-that only encodings that broadly benefit the community are registered. In order
-to be accepted for registration as draft, an encoding MUST:
+that only encodings that broadly benefit the community are registered.
+To be accepted for registration as draft, an encoding MUST:
     </t>
     <t>
 1. Volunteer at least one person who will be available to answer questions and
