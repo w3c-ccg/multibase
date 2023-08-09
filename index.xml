@@ -268,7 +268,7 @@ entries made on an <eref
 target="https://www.rfc-editor.org/rfc/rfc8126.html#section-4.2">Experimental
 Use</eref>
 basis as specified in RFC8126 are not accepted for this registry, but
-implementers are encouraged to make them in public channels where existing
+implementers are encouraged to announce them in public channels where existing
 implementations are discussed. Registrations at this level are essentially
 courtesies to other registrants and invitations to collaborate or provide
 feedback. These can be deprecated in favor of competing "Draft" or "Final"
