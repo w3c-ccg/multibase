@@ -256,7 +256,7 @@ implementations of the specification (in alphabetical order):
   </section>
   <section anchor="appendix-d" title="IANA Considerations">
     <t>
-The registry for this specification are managed as a stand-alone IANA registry;
+The registry for this specification is managed as a stand-alone IANA registry;
 registrations in this table would be keyed to the Unicode code point for each
 entry. Registrations and re-registrations proceed through the following
 steps:
