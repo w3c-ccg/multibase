@@ -7,12 +7,12 @@
 <?rfc symrefs="yes" ?>
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="info"
   ipr="trust200902" submissionType="IETF"
-  docName="draft-multiformats-multibase-07"
+  docName="draft-multiformats-multibase-08"
   tocInclude="true" sortRefs="true" symRefs="true" version="2">
 
 <front>
   <title>The Multibase Data Format</title>
-  <seriesInfo name="Internet-Draft" value="draft-multiformats-multibase-07"/>
+  <seriesInfo name="Internet-Draft" value="draft-multiformats-multibase-08"/>
   <author initials="J." surname="Benet" fullname="Juan Benet">
     <organization>Protocol Labs</organization>
     <address>
@@ -45,7 +45,7 @@
     </address>
   </author>
 
-  <date month="February" day="19" year="2023" />
+  <date month="August" day="20" year="2023" />
   <area>Security</area>
   <workgroup />
   <keyword>base-encoding</keyword>
@@ -53,7 +53,6 @@
   <keyword>base58</keyword>
   <keyword>base32</keyword>
   <keyword>base16</keyword>
-  <keyword>base2</keyword>
 
   <abstract>
     <t>
