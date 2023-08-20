@@ -20,11 +20,14 @@ print("""
 for line in csvdata:
     codec = line[0].strip()
     identifier = line[1].strip()
-    status = 'active'
     spec = line[2].strip().replace(
         'rfc4648', '<xref target="RFC4648">RFC 4648</xref>')
+    status = line[3].strip()
 
     if(identifier == 'code'):
+        continue
+
+    if(status != 'default'):
         continue
 
     print(f'        <c>{codec}</c><c>{identifier}</c><c>{status}</c><c>{spec}</c>')

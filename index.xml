@@ -140,8 +140,7 @@ data specifies the value of the output of the multibase encoding algorithm.
 </middle>
 
 <back>
-  <references>
-    <name>Normative References</name>
+  <references title="Normative References">
     <reference anchor="RFC4648" target="https://www.rfc-editor.org/info/rfc4648">
       <front>
         <title>The Base16, Base32, and Base64 Data Encodings</title>
@@ -151,7 +150,6 @@ data specifies the value of the output of the multibase encoding algorithm.
       <seriesInfo name="RFC" value="4648"/>
       <seriesInfo name="DOI" value="10.17487/RFC4648"/>
     </reference>
-
   </references>
 
   <section anchor="appendix-a" title="Security Considerations">
@@ -236,31 +234,15 @@ Registry to be created and maintained at (the suggested URI)
         <ttcol align="center">Status</ttcol>
         <ttcol align="center">Specification</ttcol>
 
-        <c>identity</c><c>0x00</c><c>active</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
-        <c>base2</c><c>0</c><c>active</c><c>binary (01010101)</c>
-        <c>base8</c><c>7</c><c>active</c><c>octal</c>
-        <c>base10</c><c>9</c><c>active</c><c>decimal</c>
-        <c>base16</c><c>f</c><c>active</c><c>hexadecimal</c>
-        <c>base16upper</c><c>F</c><c>active</c><c>hexadecimal</c>
-        <c>base32hex</c><c>v</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding - highest char</c>
-        <c>base32hexupper</c><c>V</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding - highest char</c>
-        <c>base32hexpad</c><c>t</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32hexpadupper</c><c>T</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32</c><c>b</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding</c>
-        <c>base32upper</c><c>B</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - no padding</c>
-        <c>base32pad</c><c>c</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32padupper</c><c>C</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive - with padding</c>
-        <c>base32z</c><c>h</c><c>active</c><c>z-base-32 (used by Tahoe-LAFS)</c>
-        <c>base36</c><c>k</c><c>active</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
-        <c>base36upper</c><c>K</c><c>active</c><c>base36 \[0-9a-z\] case-insensitive - no padding</c>
-        <c>base58btc</c><c>z</c><c>active</c><c>base58 bitcoin</c>
-        <c>base58flickr</c><c>Z</c><c>active</c><c>base58 flicker</c>
-        <c>base64</c><c>m</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
-        <c>base64pad</c><c>M</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding - MIME encoding</c>
-        <c>base64url</c><c>u</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
-        <c>base64urlpad</c><c>U</c><c>active</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
-        <c>proquint</c><c>p</c><c>active</c><c>PRO-QUINT https://arxiv.org/html/0901.4016</c>
-        <c>base256emoji</c><c>🚀</c><c>active</c><c>base256 with custom alphabet using variable-sized-codepoints</c>
+        <c>identity</c><c>0x00</c><c>default</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
+        <c>base16</c><c>f</c><c>default</c><c>Hexadecimal (lowercase)</c>
+        <c>base16upper</c><c>F</c><c>default</c><c>Hexadecimal (uppercase)</c>
+        <c>base32</c><c>b</c><c>default</c><c>RFC4648 case-insensitive - no padding</c>
+        <c>base32upper</c><c>B</c><c>default</c><c>RFC4648 case-insensitive - no padding</c>
+        <c>base58btc</c><c>z</c><c>default</c><c>Base58 bitcoin</c>
+        <c>base64</c><c>m</c><c>default</c><c>RFC4648 no padding</c>
+        <c>base64url</c><c>u</c><c>default</c><c>RFC4648 no padding</c>
+        <c>base64urlpad</c><c>U</c><c>default</c><c>RFC4648 with padding</c>
       </texttable>
 
       <t>
