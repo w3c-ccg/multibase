@@ -260,7 +260,8 @@ registrations in this table would be keyed to the Unicode code point for each
 entry. Registrations and re-registrations proceed through the following
 steps:
     </t>
-    <t>
+    <values>
+      <value>
 1. "Reserved" entries can be inserted directly by protocol designers or Stewards
 to prevent interoperability or functional pitfalls. "Reserved" or "Experimental"
 entries made on an <eref
@@ -272,19 +273,20 @@ implementations are discussed. Registrations at this level are essentially
 courtesies to other registrants and invitations to collaborate or provide
 feedback. These can be deprecated in favor of competing "Draft" or "Final"
 proposals for the same unique entry code. 
-    </t>
-    <t>
+      </value>
+      <value>
 2. "Draft" entries can be submitted by mature projects that can reasonably
 document the requirements below and pass  <eref
 target="https://www.rfc-editor.org/rfc/rfc8126.html#section-4.5">Expert
 Review</eref>.
-    </t>
-    <t>
+      </value>
+      <value>
 3. "Final" entries must document the complete requirements below and pass review
 on a  <eref
 target="https://www.rfc-editor.org/rfc/rfc8126.html#section-4.6">Specification
 Required</eref> basis.
-    </t>
+      </value>
+    </values>
     <t>
 To ensure that our registries are as extensible as they need to be but
 do not suffer from over-use, we have a set of criteria which are used to ensure
@@ -344,7 +346,7 @@ Registry to be created and maintained at (the suggested URI)
         <ttcol align="center">Status</ttcol>
         <ttcol align="center">Specification</ttcol>
 
-        <c>identity</c><c>NULL (0x00 in UTF-8)</c><c>reserved</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
+        <c>identity</c><c>NUL</c><c>reserved</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
         <c>base2</c><c>0</c><c>final</c><c>binary (01010101)</c>
         <c>base8</c><c>7</c><c>final</c><c>octal</c>
         <c>base10</c><c>9</c><c>final</c><c>decimal</c>
