@@ -294,21 +294,21 @@ that only encodings that broadly benefit the community are registered.
 To be accepted for registration as draft, an encoding MUST:
       <list style="numbers">
         <t>
-1. Volunteer at least one person who will be available to answer questions and
+Volunteer at least one person who will be available to answer questions and
 address issues through the registration period and for some time after the
 encoding is accepted. 
         </t>
         <t>
-2. Additionally, contact information for a change controller (not necessarily
+Additionally, contact information for a change controller (not necessarily
 the same person as above; ideally an organization assuming long-term
 responsibility for at least one implementation using the new base code) who can
 handle updates to or disputes regarding an entry.
         </t>
         <t>
-3. Describe a convincing use case for the deployment of this specific encoding.
+Describe a convincing use case for the deployment of this specific encoding.
         </t>
         <t>
-4. For that registration to proceed to `final` designation, it must also
+For that registration to proceed to `final` designation, it must also
 provide evidence that the encoding is supported by at least two production
 implementations.
         </t>
