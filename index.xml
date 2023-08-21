@@ -313,6 +313,7 @@ provide evidence that the encoding is supported by at least two production
 implementations.
         </t>
       </list>
+    </t>
     <t>
 If an encoding seems plausible but does not yet fulfill all requirements, it can
 be registered with a `draft` status.  In exceptional cases, consensus of the
