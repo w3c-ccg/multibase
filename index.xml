@@ -325,7 +325,7 @@ target="https://github.com/orgs/ipfs/teams/specs-stewards/members">Specs
 Stewards</eref> regularly. If, after some reasonable amount of time (enough to
 make progress, but ideally no more than a year), a `draft` encoding has not
 resolved issues with its registration, it will become `deprecated`. After an
-encoding is `deprecated` for some time, at the discretion of the Stewards and
+encoding has been `deprecated` for some time, at the discretion of the Stewards and
 Experts decided to be sufficient for its use to be reasonably considered
 eliminated or historical, its code becomes available for reuse (but remains
 listed under new entries as `deprecated`). 
