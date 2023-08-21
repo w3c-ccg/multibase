@@ -260,8 +260,8 @@ registrations in this table would be keyed to the Unicode code point for each
 entry. Registrations and re-registrations proceed through the following
 steps:
     </t>
-    <values>
-      <value>
+    <ol>
+      <insertInsDelClass>
 1. "Reserved" entries can be inserted directly by protocol designers or Stewards
 to prevent interoperability or functional pitfalls. "Reserved" or "Experimental"
 entries made on an <eref
@@ -273,20 +273,20 @@ implementations are discussed. Registrations at this level are essentially
 courtesies to other registrants and invitations to collaborate or provide
 feedback. These can be deprecated in favor of competing "Draft" or "Final"
 proposals for the same unique entry code. 
-      </value>
-      <value>
+      </insertInsDelClass>
+      <insertInsDelClass>
 2. "Draft" entries can be submitted by mature projects that can reasonably
 document the requirements below and pass  <eref
 target="https://www.rfc-editor.org/rfc/rfc8126.html#section-4.5">Expert
 Review</eref>.
-      </value>
-      <value>
+      </insertInsDelClass>
+      <insertInsDelClass>
 3. "Final" entries must document the complete requirements below and pass review
 on a  <eref
 target="https://www.rfc-editor.org/rfc/rfc8126.html#section-4.6">Specification
 Required</eref> basis.
-      </value>
-    </values>
+      </insertInsDelClass>
+    </ol>
     <t>
 To ensure that our registries are as extensible as they need to be but
 do not suffer from over-use, we have a set of criteria which are used to ensure
