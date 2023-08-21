@@ -292,27 +292,26 @@ To ensure that our registries are as extensible as they need to be but
 do not suffer from over-use, we have a set of criteria which are used to ensure
 that only encodings that broadly benefit the community are registered.
 To be accepted for registration as draft, an encoding MUST:
-      <list style="numbers">
-        <t>
+    </t>
+    <t>
 1. Volunteer at least one person who will be available to answer questions and
 address issues through the registration period and for some time after the
 encoding is accepted. 
-        </t>
-        <t>
+    </t>
+    <t>
 2. Additionally, contact information for a change controller (not necessarily
 the same person as above; ideally an organization assuming long-term
 responsibility for at least one implementation using the new base code) who can
 handle updates to or disputes regarding an entry.
-        </t>
-        <t>
+    </t>
+    <t>
 3. Describe a convincing use case for the deployment of this specific encoding.
-        </t>
-        <t>
+    </t>
+    <t>
 4. For that registration to proceed to `final` designation, it must also
 provide evidence that the encoding is supported by at least two production
 implementations.
-        </t>
-      </list>
+    </t>
     <t>
 If an encoding seems plausible but does not yet fulfill all requirements, it can
 be registered with a `draft` status.  In exceptional cases, consensus of the
