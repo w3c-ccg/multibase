@@ -165,7 +165,7 @@ that uses the Bitcoin "alphabet" as the encoding character set:
         <figure>
           <artwork>z2NEpo7TZRRrLZSi2U</artwork>
         </figure>
-The first character (z) specifies the multibase encoding algorithm (entry
+The first character (z) indicates the multibase encoding algorithm (entry
 `base58btc` in the table below). The rest of the data specifies the value of the
 output of the multibase encoding algorithm.
       </t>
