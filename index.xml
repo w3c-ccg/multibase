@@ -320,15 +320,16 @@ be registered with a `draft` status.  In exceptional cases, consensus of the
 Stewards and Experts can excuse one of the above requirements. 
     </t>
     <t>
-Encodings with a `draft` status should be revisited by the <eref
+Encodings with a `draft` status should be regularly revisited by the <eref
 target="https://github.com/orgs/ipfs/teams/specs-stewards/members">Specs
-Stewards</eref> regularly. If, after some reasonable amount of time (enough to
-make progress, but ideally no more than a year), a `draft` encoding has not
-resolved issues with its registration, it will become `deprecated`. After an
-encoding has been `deprecated` for some time, at the discretion of the Stewards and
-Experts decided to be sufficient for its use to be reasonably considered
-eliminated or historical, its code becomes available for reuse (but remains
-listed under new entries as `deprecated`). 
+Stewards</eref>. If, after some reasonable amount of time (enough to make
+progress, but ideally no more than a year), a `draft` encoding has not
+sufficiently resolved issues with its registration to advance to `final`,
+it will become `deprecated`. After an encoding has been `deprecated` for
+some time, decided at the discretion of the Stewards and Experts to be
+sufficient for its use to be reasonably considered eliminated or
+historical, its code becomes available for reuse (but remains listed under
+new entries as `deprecated`). 
     </t>
     <t>
 Accepted encodings that meet all of the requirements above (confirmed by the
