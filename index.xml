@@ -145,7 +145,7 @@ A multibase-encoded value follows a simple format:
       </figure>
     </t>
     <t>
-Each unique encoding algorithm is thus represented unambiguously by a single
+Each unique encoding algorithm is represented unambiguously by a single
 Unicode code point that is always the first "character" in the target encoding.
 To date, all entries have followed the convention of using the highest Unicode
 code point value in the encoding alphabet as their prefix, but this is not a
