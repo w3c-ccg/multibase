@@ -45,7 +45,24 @@
     </address>
   </author>
 
+  <author initials="J." surname="Caballero" fullname="Juan Caballero">
+    <organization>learningProof uG</organization>
+    <address>
+      <postal>
+        <street>Kiefholzstrasse</street>
+        <city>Berlin</city>
+        <region>Berlin</region>
+        <code>12435</code>
+        <country>Germany</country>
+      </postal>
+      <phone>+1 415 555 5555</phone>
+      <email>bumblefudge@learningproof.xyz</email>
+      <uri>http://learningproof.xyz/</uri>
+    </address>
+  </author>
+
   <date month="August" day="20" year="2023" />
+
   <area>Security</area>
   <workgroup />
   <keyword>base-encoding</keyword>
@@ -56,15 +73,16 @@
 
   <abstract>
     <t>
-Raw binary data is often encoded using a mechanism that enables the data
-to be included in human-readable text-based formats. This mechanism is often
-referred to as "base-encoding the data". Base-encoding is often used when
-expressing binary data in hyperlinks, cryptographic keys in web pages, or
-security tokens in application software. There are a variety of base-encodings,
-such as base32, base58, and base64. It is not always possible to differentiate
-one base-encoding from another. The purpose of this specification is to provide
-a mechanism to be able to deterministically identify the base-encoding for a
-particular string of data.
+Raw binary data is often encoded using a mechanism that enables the data to be
+included in human-readable text-based formats. This mechanism is often referred
+to as "base-encoding the data". Base-encoding is often used when expressing
+binary data in hyperlinks, cryptographic keys in web pages, or security tokens
+in application software. There are a variety of base-encodings, such as base32,
+base58, and base64. It is not always possible to differentiate one base-encoding
+from another without knowing the context in which it was encoded. The purpose of
+this specification is to provide a mechanism by which to deterministically
+identify the base-encoding for a particular string of encoded data from its
+encoded form.
     </t>
   </abstract>
 
@@ -105,34 +123,51 @@ bytes, we can't just standardize around a single base encoding because
 there is no optimal encoding for all cases.
     </t>
     <t>
-Unfortunately, it's not always clear what base encoding is used; that's
-where this specification comes in. It answers the question:
+Unfortunately, it's not always clear what base encoding was used, and the
+encoded form can often be severed from its encoding context; that's where this
+specification comes in. It answers the question:
     </t>
     <t>
-Given data 'd' encoded into text 's', what base is it encoded with?
+<i>Given binary data <var>d</var> encoded into text <var>s</var>, what base 
+<var>b</var> was used to encode it?</i>
+    </t>
+    <t>
+To answer this question, a single code point is prepended to <var>s</var> at
+time of encoding, which signals which <var>b</var> can be used to reconstruct
+<var>d</var> in that new context.
     </t>
   </section>
   <section anchor="components" title="The Multibase Format">
     <t>
 A multibase-encoded value follows a simple format:
       <figure>
-        <artwork>base-encoding-character base-encoded-data</artwork>
+        <artwork>base-encoding-codepoint base-encoded-data</artwork>
       </figure>
     </t>
     <t>
-The encoding algorithm is a single character value that is always the first byte
-of the data. The possible values for this field are provided in
-<eref target="#mb-registry">The Multibase Algorithm Registry</eref>.
+Each unique encoding algorithm is represented unambiguously by a single
+Unicode code point that is always the first "character" in the target encoding.
+To date, all entries have followed the convention of using the highest Unicode
+code point value in the encoding alphabet as their prefix, but this is not a
+requirement of future entries.
+    </t>
+    <t>
+Although the "prefix character" (or more precisely, "prefix Unicode code point") is the
+determinant value here, the range of all possible multibase entries is narrower
+than all possible codepoints for two reasons. Firstly, there are reserved
+entries required for the functioning of the system; for example, the
+identity/null codepoint is reserved for legacy compatibility reasons. 
     </t>
     <section anchor="fields" title="A Multibase Example">
       <t>
-The following is an encoding of "Hello World!" using the version of base-58
-that utilizes the Bitcoin encoding character set:
+The following is an encoding of "Hello World!" in the version of base-58
+that uses the Bitcoin "alphabet" as the encoding character set:
         <figure>
           <artwork>z2NEpo7TZRRrLZSi2U</artwork>
         </figure>
-The first byte (z) specifies the multibase encoding algorithm. The rest of the
-data specifies the value of the output of the multibase encoding algorithm.
+The first character (z) indicates the multibase encoding algorithm (entry
+`base58btc` in the table below). The rest of the data specifies the value of the
+output of the multibase encoding algorithm.
       </t>
     </section>
   </section>
@@ -219,34 +254,130 @@ implementations of the specification (in alphabetical order):
     </t>
   </section>
   <section anchor="appendix-d" title="IANA Considerations">
-    <section anchor="mh-registry" title="The Multibase Algorithms Registry">
+    <t>
+The registry for this specification is managed as a stand-alone IANA registry;
+registrations in this table would be keyed to the Unicode code point for each
+entry. Registrations and re-registrations proceed through the following
+steps:
+      <list style="numbers">
+        <t>
+"Reserved" entries can be inserted directly by protocol designers or Stewards
+to prevent interoperability or functional pitfalls. "Reserved" or "Experimental"
+entries made on an <eref
+target="https://www.rfc-editor.org/rfc/rfc8126.html#section-4.2">Experimental
+Use</eref>
+basis as specified in RFC8126 are not accepted for this registry, but
+implementers are encouraged to announce them in public channels where existing
+implementations are discussed. Registrations at this level are essentially
+courtesies to other registrants and invitations to collaborate or provide
+feedback. These can be deprecated in favor of competing "Draft" or "Final"
+proposals for the same unique entry code. 
+        </t>
+        <t>
+"Draft" entries can be submitted by mature projects that can reasonably
+document the requirements below and pass  <eref
+target="https://www.rfc-editor.org/rfc/rfc8126.html#section-4.5">Expert
+Review</eref>.
+        </t>
+        <t>
+"Final" entries must document the complete requirements below and pass review
+on a  <eref
+target="https://www.rfc-editor.org/rfc/rfc8126.html#section-4.6">Specification
+Required</eref> basis.
+        </t>
+      </list>
+    </t>
+    <t>
+To ensure that our registries are as extensible as they need to be but
+do not suffer from over-use, we have a set of criteria which are used to ensure
+that only encodings that broadly benefit the community are registered.
+To be accepted for registration as `draft`, an encoding MUST:
+      <list style="numbers">
+        <t>
+Volunteer at least one person who will be available to answer questions and
+address issues through the registration period and for some time after the
+encoding is accepted. 
+        </t>
+        <t>
+Include contact information for a change controller who can handle updates to
+or disputes regarding an entry. This can be, but is not necessarily, the same
+person identified above. Ideally, this is an organization assuming long-term
+responsibility for at least one implementation using the new base code.
+        </t>
+        <t>
+Describe a convincing use case for the deployment of this specific encoding.
+        </t>
+      </list>
+    </t>
+    <t>
+For a registration to proceed to `final` designation, it must also
+provide evidence that the encoding is supported by at least two production
+implementations.
+    </t>
+    <t>
+If an encoding seems plausible but does not yet fulfill all requirements, it can
+be registered with a `draft` status.  In exceptional cases, consensus of the
+Stewards and Experts can excuse one of the above requirements. 
+    </t>
+    <t>
+Encodings with a `draft` status should be regularly revisited by the <eref
+target="https://github.com/orgs/ipfs/teams/specs-stewards/members">Specs
+Stewards</eref>. If, after some reasonable amount of time (enough to make
+progress, but ideally no more than a year), a `draft` encoding has not
+sufficiently resolved issues with its registration to advance to `final`,
+it will become `deprecated`. After an encoding has been `deprecated` for
+some time, decided at the discretion of the Stewards and Experts to be
+sufficient for its use to be reasonably considered eliminated or
+historical, its code becomes available for reuse (but remains listed under
+new entries as `deprecated`). 
+    </t>
+    <t>
+Encodings confirmed by the Experts to have met all of the requirements above
+will, within a reasonable amount of time, be granted a status of `permanent`
+by the Stewards.
+    </t>
+    <section anchor="mb-registry" title="The Multibase Algorithms Registry">
       <t>
-
 The following initial entries should be added to the Multibase Algorithms
 Registry to be created and maintained at (the suggested URI)
         <eref target="http://www.iana.org/assignments/multibase-algorithms">http://www.iana.org/assignments/multibase-algorithms</eref>:
       </t>
 
-      <texttable anchor="mh-registry-table" title="Multihash Algorithms Registry">
+      <texttable anchor="mb-registry-table" title="Multibase Algorithms Registry">
         <ttcol align="center">Algorithm</ttcol>
-        <ttcol align="center">Identifier (character)</ttcol>
+        <ttcol align="center">Identifier (codepoint)</ttcol>
         <ttcol align="center">Status</ttcol>
         <ttcol align="center">Specification</ttcol>
 
-        <c>identity</c><c>0x00</c><c>default</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
-        <c>base16</c><c>f</c><c>default</c><c>Hexadecimal (lowercase)</c>
-        <c>base16upper</c><c>F</c><c>default</c><c>Hexadecimal (uppercase)</c>
-        <c>base32</c><c>b</c><c>default</c><c>RFC4648 case-insensitive - no padding</c>
-        <c>base32upper</c><c>B</c><c>default</c><c>RFC4648 case-insensitive - no padding</c>
-        <c>base58btc</c><c>z</c><c>default</c><c>Base58 bitcoin</c>
-        <c>base64</c><c>m</c><c>default</c><c>RFC4648 no padding</c>
-        <c>base64url</c><c>u</c><c>default</c><c>RFC4648 no padding</c>
-        <c>base64urlpad</c><c>U</c><c>default</c><c>RFC4648 with padding</c>
+        <c>identity</c><c>NUL</c><c>reserved</c><c>8-bit binary (encoder and decoder keeps data unmodified)</c>
+        <c>base2</c><c>0</c><c>final</c><c>binary (01010101)</c>
+        <c>base8</c><c>7</c><c>final</c><c>octal</c>
+        <c>base10</c><c>9</c><c>final</c><c>decimal</c>
+        <c>base16</c><c>f</c><c>final</c><c>hexadecimal</c>
+        <c>base16upper</c><c>F</c><c>final</c><c>hexadecimal</c>
+        <c>base32hex</c><c>v</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — no padding — highest char</c>
+        <c>base32hexupper</c><c>V</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — no padding — highest char</c>
+        <c>base32hexpad</c><c>t</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — with padding</c>
+        <c>base32hexpadupper</c><c>T</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — with padding</c>
+        <c>base32</c><c>b</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — no padding</c>
+        <c>base32upper</c><c>B</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — no padding</c>
+        <c>base32pad</c><c>c</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — with padding</c>
+        <c>base32padupper</c><c>C</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> case-insensitive — with padding</c>
+        <c>base32z</c><c>h</c><c>final</c><c>z-base-32 (used by Tahoe-LAFS)</c>
+        <c>base36</c><c>k</c><c>final</c><c>base36 \[0-9a-z\] case-insensitive — no padding</c>
+        <c>base36upper</c><c>K</c><c>final</c><c>base36 \[0-9a-z\] case-insensitive — no padding</c>
+        <c>base58btc</c><c>z</c><c>final</c><c>base58 bitcoin</c>
+        <c>base58flickr</c><c>Z</c><c>final</c><c>base58 flicker</c>
+        <c>base64</c><c>m</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
+        <c>base64pad</c><c>M</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> with padding — MIME encoding</c>
+        <c>base64url</c><c>u</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> no padding</c>
+        <c>base64urlpad</c><c>U</c><c>final</c><c><xref target="RFC4648">RFC 4648</xref> with padding</c>
       </texttable>
 
       <t>
-NOTE: The most up to date place for developers to find the table above is
-<eref target="https://github.com/multiformats/multibase/blob/master/multibase.csv">https://github.com/multiformats/multibase/blob/master/multibase.csv</eref>.
+NOTE: Developers can find the most up-to-date, definitive version of the table above at
+<eref
+target="https://github.com/multiformats/multibase/blob/master/multibase.csv">https://github.com/multiformats/multibase/blob/master/multibase.csv</eref>.
       </t>
     </section>
   </section>
