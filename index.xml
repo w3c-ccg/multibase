@@ -332,9 +332,9 @@ historical, its code becomes available for reuse (but remains listed under
 new entries as `deprecated`). 
     </t>
     <t>
-Accepted encodings that meet all of the requirements above (confirmed by the
-Experts) will be granted a status of `permanent` within a reasonable amount of
-time by the Stewards.
+Encodings confirmed by the Experts to have met all of the requirements above
+will, within a reasonable amount of time, be granted a status of `permanent`
+by the Stewards.
     </t>
     <section anchor="mb-registry" title="The Multibase Algorithms Registry">
       <t>
