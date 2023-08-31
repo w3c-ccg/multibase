@@ -152,7 +152,7 @@ code point value in the encoding alphabet as their prefix, but this is not a
 requirement of future entries.
     </t>
     <t>
-Although the "prefix character" (or more precisely, Unicode code point) is the
+Although the "prefix character" (or more precisely, "prefix Unicode code point") is the
 determinant value here, the range of all possible multibase entries is narrower
 than all possible codepoints for two reasons. Firstly, there are reserved
 entries required for the functioning of the system; for example, the
