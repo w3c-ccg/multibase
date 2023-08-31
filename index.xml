@@ -307,12 +307,12 @@ responsibility for at least one implementation using the new base code.
         <t>
 Describe a convincing use case for the deployment of this specific encoding.
         </t>
-        <t>
-For that registration to proceed to `final` designation, it must also
+      </list>
+    </t>
+    <t>
+For a registration to proceed to `final` designation, it must also
 provide evidence that the encoding is supported by at least two production
 implementations.
-        </t>
-      </list>
     </t>
     <t>
 If an encoding seems plausible but does not yet fulfill all requirements, it can
