@@ -299,10 +299,10 @@ address issues through the registration period and for some time after the
 encoding is accepted. 
         </t>
         <t>
-Additionally, contact information for a change controller (not necessarily
-the same person as above; ideally an organization assuming long-term
-responsibility for at least one implementation using the new base code) who can
-handle updates to or disputes regarding an entry.
+Include contact information for a change controller who can handle updates to
+or disputes regarding an entry. This can be, but is not necessarily, the same
+person identified above. Ideally, this is an organization assuming long-term
+responsibility for at least one implementation using the new base code.
         </t>
         <t>
 Describe a convincing use case for the deployment of this specific encoding.
